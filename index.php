@@ -1,86 +1,7 @@
 <?php
+require('data.php');
+require('functions.php');
 
-$students = [
-    [
-        'name' => 'Elise Stromberg',
-        'year' => 3,
-        'profession' => 'Cyber analyst',
-        'company' => 'Cincinnati Insurance Companies',
-        'email' => 'stromberge1@nku.edu',
-        'skills' => [
-            [
-                'name' => 'Java',
-                'level' => 0
-            ],
-            [
-                'name' => 'Information Technologies',
-                'level' => 80
-            ],
-            [
-                'name' => 'Splunk',
-                'level' => 70
-            ],
-
-        ],
-        'photo' => 'picture_for_class.jpg',
-        'bio' => 'I am a junior at Northern Kentucky University. I am majoring in Cybersecurity with a minor in Japanese. I am from the Cincinnati region and have been born and raised in Ohio. I chose to go into cybersecurity because it seemed like a good profession for someone interested in technology. I also want to help protect people from scammers.',
-        'quote' => 'Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill',
-        'fact' => 'The farthest place I have traveled to is Mongolia. It took 5 flights and around 2 days to reach it. I also am a cosplayer and like to sew outfits and plushes.'
-
-    ],
-    [
-        'name' => 'Alex Lisa',
-        'year' => 3,
-        'profession' => 'Dungeons and Dragons DM',
-        'company' => 'Dungeons and Dragons',
-        'email' => 'lisaa1@nku.edu',
-        'skills' => [
-            [
-                'name' => 'Dungeons and Dragons DM',
-                'level' => 100
-            ],
-            [
-                'name' => 'Technology',
-                'level' => 100
-            ],
-            [
-                'name' => 'Speech Skills',
-                'level' => 100
-            ],
-
-        ],
-        'photo' => 'picture2.jpg',
-        'bio' => 'Duis pretium et purus at vehicula. Proin bibendum tempor vestibulum. Quisque sodales volutpat dui id rhoncus. In nec erat nisl. Vestibulum vel mattis massa, nec mollis nibh. Nullam sed tempor sem. Proin nulla augue, iaculis nec quam id, imperdiet rutrum nunc. Cras eget tincidunt nunc. Maecenas eget sagittis ligula, sed iaculis felis. Praesent imperdiet est eu risus venenatis dapibus. Phasellus laoreet quam erat, et consequat tellus laoreet iaculis. Cras ultrices, mi non fringilla lacinia, mauris tortor mattis nisi, id consequat lectus mauris sed sapien. Etiam nec odio at est tincidunt elementum sit amet non est. Integer feugiat sem turpis, sed ultricies nulla imperdiet cursus. Vestibulum consequat mattis turpis, et fringilla neque cursus vel.',
-        'quote' => 'My name is Inigo Montoya. You killed my father. Prepare to die. - Inigo Montoya',
-        'fact' => 'Nunc elementum suscipit augue, eu porta orci pretium quis. Integer a tortor at odio facilisis ultrices.'
-    ],
-    [
-        'name' => 'Dylan Gaines',
-        'year' => 2,
-        'profession' => 'Professional ice cream taster',
-        'company' => 'Freelancer',
-        'email' => 'gainesd2@nku.edu',
-        'skills' => [
-            [
-                'name' => 'Tasting ice cream',
-                'level' => 60
-            ],
-            [
-                'name' => 'Making everyone laugh',
-                'level' => 100
-            ],
-            [
-                'name' => 'Giving me hope',
-                'level' => 100
-            ],
-
-        ],
-        'photo' => 'picture.jpg',
-        'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis finibus ex. Nulla facilisi. Nunc dictum viverra justo. Integer eleifend diam at consequat varius. Mauris ac dictum nisl. Donec suscipit efficitur lacus, vitae ultrices magna iaculis id. Etiam lobortis at felis eu lobortis. Phasellus ut diam cursus, pulvinar nisi gravida, sodales risus. Maecenas id pellentesque tortor. Vivamus aliquet quam in enim semper, faucibus feugiat mauris dictum. Nunc nibh lorem, ultrices sed luctus non, auctor sed orci. Proin id tellus felis. Duis blandit volutpat libero, et commodo lectus condimentum lacinia. Nunc congue magna metus. Vestibulum aliquet gravida finibus.',
-        'quote' => 'Ooga Booga- Some caveman',
-        'fact' => 'Fusce luctus nibh lacinia aliquam venenatis.'
-    ],
-];
 ?>
 
 <!doctype html>
@@ -115,34 +36,10 @@ $students = [
     <div class="row">
         <!-- Single Advisor-->
         <?php
-        for($i = 0; $i < count($students); $i++){
-            ?>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s"
-                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <!-- Team Thumb-->
-                    <div class="advisor_thumb"><a href="detail.php?index=<?php echo $i; ?>"><img src="<?php echo $students[$i]['photo']; ?>" alt=""
-                                                                         style='height: auto; width: 100%; object-fit: contain'></a>
-                        <!-- Social Info-->
-                        <div class="social-info"><a href="detail.php?index=<?php echo $i; ?>"><i class="fa fa-facebook"></i></a><a
-                                    href="detail.php?index=<?php echo $i; ?>"><i class="fa fa-twitter"></i></a><a href="detail.php?index=<?php echo $i; ?>"><i
-                                        class="fa fa-linkedin"></i></a></div>
-                    </div>
-                    <!-- Team Details-->
+        for ($i = 0; $i < count($studentArray); $i++) {
 
-                    <div class="single_advisor_details_info">
-                        <h6><?php echo $students[$i]['name']; ?></h6>
-                        <p class="designation"><?php echo 'Student at Northern Kentucky University'; ?></p>
-                        <?php
-                        for($j = 0; $j < $students[$i]['year']; $j++){
-                            echo '&#9728;';
-                        }
-                        ?>
-                    </div>
-                </div>
+            card_display($studentArray[$i], $i);
 
-            </div>
-        <?php
         }
 
         ?>

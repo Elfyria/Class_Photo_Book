@@ -1,87 +1,7 @@
 <?php
-echo $_GET['index'];
+require('data.php'); // importing array and functions
+require('functions.php');
 
-$students = [
-    [
-        'name' => 'Elise Stromberg',
-        'year' => 3,
-        'profession' => 'Cyber analyst',
-        'company' => 'Cincinnati Insurance Companies',
-        'email' => 'stromberge1@nku.edu',
-        'skills' => [
-            [
-                'name' => 'Java',
-                'level' => 0
-            ],
-            [
-                'name' => 'Information Technologies',
-                'level' => 80
-            ],
-            [
-                'name' => 'Splunk',
-                'level' => 70
-            ],
-
-        ],
-        'photo' => 'picture_for_class.jpg',
-        'bio' => 'I am a junior at Northern Kentucky University. I am majoring in Cybersecurity with a minor in Japanese. I am from the Cincinnati region and have been born and raised in Ohio. I chose to go into cybersecurity because it seemed like a good profession for someone interested in technology. I also want to help protect people from scammers.',
-        'quote' => 'Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill',
-        'fact' => 'The farthest place I have traveled to is Mongolia. It took 5 flights and around 2 days to reach it. I also am a cosplayer and like to sew outfits and plushes.'
-
-    ],
-    [
-        'name' => 'Alex Lisa',
-        'year' => 3,
-        'profession' => 'Dungeons and Dragons DM',
-        'company' => 'Dungeons and Dragons',
-        'email' => 'lisaa1@nku.edu',
-        'skills' => [
-            [
-                'name' => 'Dungeons and Dragons DM',
-                'level' => 100
-            ],
-            [
-                'name' => 'Technology',
-                'level' => 100
-            ],
-            [
-                'name' => 'Speech Skills',
-                'level' => 100
-            ],
-
-        ],
-        'photo' => 'picture2.jpg',
-        'bio' => 'Duis pretium et purus at vehicula. Proin bibendum tempor vestibulum. Quisque sodales volutpat dui id rhoncus. In nec erat nisl. Vestibulum vel mattis massa, nec mollis nibh. Nullam sed tempor sem. Proin nulla augue, iaculis nec quam id, imperdiet rutrum nunc. Cras eget tincidunt nunc. Maecenas eget sagittis ligula, sed iaculis felis. Praesent imperdiet est eu risus venenatis dapibus. Phasellus laoreet quam erat, et consequat tellus laoreet iaculis. Cras ultrices, mi non fringilla lacinia, mauris tortor mattis nisi, id consequat lectus mauris sed sapien. Etiam nec odio at est tincidunt elementum sit amet non est. Integer feugiat sem turpis, sed ultricies nulla imperdiet cursus. Vestibulum consequat mattis turpis, et fringilla neque cursus vel.',
-        'quote' => 'My name is Inigo Montoya. You killed my father. Prepare to die. - Inigo Montoya',
-        'fact' => 'Nunc elementum suscipit augue, eu porta orci pretium quis. Integer a tortor at odio facilisis ultrices.'
-    ],
-    [
-        'name' => 'Dylan Gaines',
-        'year' => 2,
-        'profession' => 'Professional ice cream taster',
-        'company' => 'Freelancer',
-        'email' => 'gainesd2@nku.edu',
-        'skills' => [
-            [
-                'name' => 'Tasting ice cream',
-                'level' => 60
-            ],
-            [
-                'name' => 'Making everyone laugh',
-                'level' => 100
-            ],
-            [
-                'name' => 'Giving me hope',
-                'level' => 100
-            ],
-
-        ],
-        'photo' => 'picture.jpg',
-        'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis finibus ex. Nulla facilisi. Nunc dictum viverra justo. Integer eleifend diam at consequat varius. Mauris ac dictum nisl. Donec suscipit efficitur lacus, vitae ultrices magna iaculis id. Etiam lobortis at felis eu lobortis. Phasellus ut diam cursus, pulvinar nisi gravida, sodales risus. Maecenas id pellentesque tortor. Vivamus aliquet quam in enim semper, faucibus feugiat mauris dictum. Nunc nibh lorem, ultrices sed luctus non, auctor sed orci. Proin id tellus felis. Duis blandit volutpat libero, et commodo lectus condimentum lacinia. Nunc congue magna metus. Vestibulum aliquet gravida finibus.',
-        'quote' => 'Ooga Booga- Some caveman',
-        'fact' => 'Fusce luctus nibh lacinia aliquam venenatis.'
-    ],
-];
 ?>
 
 <html lang="en">
@@ -100,7 +20,7 @@ $students = [
 
 <title>
     <?php
-    echo 'ASE 230 - ' . $students[$_GET['index']]['name'];
+    echo 'ASE 230 - ' . $studentArray[$_GET['index']]['name']; //Title for student name
     ?>
 </title>
 
@@ -108,7 +28,7 @@ $students = [
 
     <h1>
         <?php
-        echo 'This is ASE 230 - ' . $students[$_GET['index']]['name'];
+        echo 'This is ASE 230 - ' . $studentArray[$_GET['index']]['name']; //gets the name of the student
         ?>
     </h1>
 
@@ -117,11 +37,11 @@ $students = [
     <div class="row">
         <div class="col-lg-5 col-md-6">
             <div class="mb-2">
-                <img class="w-100" src="<?php echo $students[$_GET['index']]['photo']; ?>" alt="">
+                <img class="w-100" src="<?php echo $studentArray[$_GET['index']]['img']; ?>" alt=""> <!-- displays the student image-->
             </div>
             <div class="mb-2 d-flex">
 
-                <h4 class="font-weight-normal"><?php echo $students[$_GET['index']]['name']; ?></h4>
+                <h4 class="font-weight-normal"><?php echo $studentArray[$_GET['index']]['name']; ?></h4> <!-- displays the student's name in the description-->
 
                 <div class="social d-flex ml-auto">
                     <p class="pr-2 font-weight-normal">Follow on:</p>
@@ -149,7 +69,7 @@ $students = [
               </span>
                         <label class="media-body">
                             <?php
-                            echo $students[$_GET['index']]['profession'];
+                            echo $studentArray[$_GET['index']]['dProfession']; //gets the dream profession from the studentArray at the current student
                             ?>
                         </label>
                     </li>
@@ -161,7 +81,7 @@ $students = [
               </span>
                         <label class="media-body">
                             <?php
-                            echo $students[$_GET['index']]['company'];
+                            echo $studentArray[$_GET['index']]['dCompany']; //gets the dream company from the studentArray at the current student
                             ?>
                         </label>
                     </li>
@@ -173,10 +93,35 @@ $students = [
               </span>
                         <label class="media-body">
                             <?php
-                            echo $students[$_GET['index']]['email'];
+                            echo $studentArray[$_GET['index']]['email']; //gets the email from the studentArray at the current student
                             ?>
                         </label>
+                    <li class="media">
+              <span class="w-25 text-black font-weight-normal">
+                  <?php
+                  echo 'Birthday: ';
+                  ?>
+              </span>
+                        <label class="media-body">
+                            <?php
+                            $birthdate = explode("-", $studentArray[$_GET["index"]]["DOB"]);
+                            echo date("Y-m-d"), -$birthdate[0];
+                            ?> <!-- This section displays the birthday. It formats the date retrieved from the array and displays it at the current index using the format "Year"-"Month"-"Day" -->
+                        </label>
                     </li>
+                    <li class="media">
+              <span class="w-25 text-black font-weight-normal">
+                  <?php
+                  echo 'Days since birth: ';
+                  ?>
+              </span>
+                        <label class="media-body">
+                            <?php
+
+                            echo days_ago($studentArray["DOB"], 'd'); //calls the days_ago function to calculate and display the days since birth
+                            ?>
+                        </label>
+
                 </ul>
             </div>
         </div>
@@ -185,14 +130,14 @@ $students = [
 
 
             <p><?php
-                echo $students[$_GET['index']]['bio'];
+                echo $studentArray[$_GET['index']]['intro']; //displays the introduction
                 ?>
             </p>
             <div class="my-2 bg-light p-2">
 
                 <p class="font-italic mb-0">
                     <?php
-                    echo $students[$_GET['index']]['quote'];
+                    echo $studentArray[$_GET['index']]['quote']; //displays a quote a student chose
                     ?>
                 </p>
 
@@ -204,16 +149,18 @@ $students = [
                 </h5>
             </div>
             <?php
-            for ($i = 0; $i < count($students); $i++) {
-                ?>
+            for ($i = 0; $i < count($studentArray[$_GET["index"]]["skills"]); $i++) {
+                ?> <!-- this for loop loops through the studentArray to display the skills and their respective values for each skill. The name of the skill is displayed with a bar showing on a
+                scale of 0 to 100 how proficient they are in it each skill-->
                 <div class="py-1">
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width:<?php echo $students[$_GET['index']]['skills'][$i]['level']; ?>%"
-                             aria-valuenow="<?php echo $students[$_GET['index']]['skills'][$i]['level']; ?>"
+                        <div class="progress-bar" role="progressbar"
+                             style="width:<?php echo $studentArray[$_GET['index']]['skills'][$i]['value']; ?>%"
+                             aria-valuenow="<?php echo $studentArray[$_GET['index']]['skills'][$i]['value']; ?>"
                              aria-valuemin="0"
                              aria-valuemax="100">
-                            <div class="progress-bar-title"><?php echo $students[$_GET['index']]['skills'][$i]['name']; ?></div>
-                            <span class="progress-bar-number"><?php echo $students[$_GET['index']]['skills'][$i]['level']."%"; ?></span>
+                            <div class="progress-bar-title"><?php echo $studentArray[$_GET['index']]['skills'][$i]['name']; ?></div>
+                            <span class="progress-bar-number"><?php echo $studentArray[$_GET['index']]['skills'][$i]['value'] . "%"; ?></span>
                         </div>
                     </div>
                 </div>
@@ -223,11 +170,11 @@ $students = [
             <h5 class="font-weight-normal"><?php echo 'Fun fact'; ?></h5>
             <p>
                 <?php
-                echo $students[$_GET['index']]['fact'];
+                echo $studentArray[$_GET['index']]['funfact']; //displays a fun fact about each student
                 ?>
             </p>
         </div>
-        <a href="index.php">Click Here to Go Back</a>
+        <a href="index.php">Click Here to Go Back</a> <!-- takes the user back to the homepage with each student display card -->
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
