@@ -1,18 +1,18 @@
 <?php
 
-function days_ago($DOB, $format) /* calculates the difference between the student's birthday and the current date to find out how many days or years
+function days_ago($DOB, $format = '%Y') /* calculates the difference between the student's birthday and the current date to find out how many days or years
     have passed since their birth. In this case, the function allows you to specify the format of the date as well as the date itself when called in another file.
  That way, it is more flexible. */
 {
-    echo $date = date('Y-m-d', time());
+    $date = date('Y-m-d', time());
     $datetime1 = date_create($date);
     $datetime2 = date_create($DOB);
 
 // calculates the difference between DateTime objects
-    $interval = date_diff($datetime1, $datetime2);
+    $interval = date_diff($datetime2, $datetime1);
 
 // printing result in days format
-    echo $interval->format($format);
+    echo $interval->format('%a');
     // echo $interval->format('%R%y years');
 
     //subtract current date from date of birth
@@ -30,7 +30,8 @@ function card_display($student, $index) //displays the individual cards in index
                             src="<?php echo $student['img']; ?>" alt=""
                             style='height: auto; width: 100%; object-fit: contain'></a>
                 <!-- Social Info-->
-                <div class="social-info"><a href="detail.php?index=<?php echo $index; ?>"><i class="fa fa-facebook"></i></a><a <!-- displays the student's social media(Facebook, Twitter, LinkedIn) -->
+                <!-- displays the student's social media(Facebook, Twitter, LinkedIn) -->
+                <div class="social-info"><a href="detail.php?index=<?php echo $index; ?>"><i class="fa fa-facebook"></i></a><a
                             href="detail.php?index=<?php echo $index; ?>"><i class="fa fa-twitter"></i></a><a
                             href="detail.php?index=<?php echo $index; ?>"><i
                                 class="fa fa-linkedin"></i></a></div>

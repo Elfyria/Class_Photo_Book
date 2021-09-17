@@ -105,7 +105,7 @@ require('functions.php');
                         <label class="media-body">
                             <?php
                             $birthdate = explode("-", $studentArray[$_GET["index"]]["DOB"]);
-                            echo date("Y-m-d"), -$birthdate[0];
+                            echo $studentArray[$_GET["index"]]["DOB"];
                             ?> <!-- This section displays the birthday. It formats the date retrieved from the array and displays it at the current index using the format "Year"-"Month"-"Day" -->
                         </label>
                     </li>
@@ -118,7 +118,7 @@ require('functions.php');
                         <label class="media-body">
                             <?php
 
-                            echo days_ago($studentArray["DOB"], 'd'); //calls the days_ago function to calculate and display the days since birth
+                            days_ago($studentArray[$_GET["index"]]["DOB"], "%d"); //calls the days_ago function to calculate and display the days since birth
                             ?>
                         </label>
 
